@@ -1,0 +1,65 @@
+.servicepage-header {
+  height: 50vh;
+  width: 100%;
+  background: url("../../../public/servicepageimages/servicepageheader.webp")
+    center center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.servicepage-tittles {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 15px;
+}
+
+.servicepage-tittles h1 {
+  font-weight: 700;
+  font-size: 60px;
+  margin-top: 10%;
+}
+
+/* mediaQueries */
+
+@media (max-width: 1024px) {
+  .servicepage-tittles h1 {
+    font-size: 48px;
+    margin-top: 8%;
+  }
+}
+
+@media (max-width: 768px) {
+  .servicepage-header {
+    height: 45vh;
+  }
+
+  .servicepage-tittles h1 {
+    font-size: 36px;
+    margin-top: 5%;
+  }
+
+  .servicepage-tittles p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .servicepage-header {
+    height: 40vh;
+    padding: 0 10px;
+  }
+
+  .servicepage-tittles h1 {
+    font-size: 32px;
+    margin-top: 10%;
+  }
+
+  .servicepage-tittles p {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+}

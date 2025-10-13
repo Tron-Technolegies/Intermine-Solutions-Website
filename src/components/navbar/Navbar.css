@@ -1,0 +1,146 @@
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-logo img {
+  height: 70px;
+  margin-top: 5%;
+}
+
+.nav-menus ul {
+  display: flex;
+  gap: 2rem;
+  list-style-type: none;
+  font-weight: 700;
+}
+
+.nav-menus ul li {
+  transition: all 0.2s ease;
+}
+
+.nav-menus ul li:hover {
+  color: var(--primary-color);
+  transform: translateX(5px);
+}
+
+.nav-icons-desktop {
+  display: flex;
+  gap: 1.3rem;
+}
+
+.nav-icons-desktop svg {
+  transition: all 0.2s ease;
+}
+
+.nav-icons-desktop svg:hover {
+  color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+.nav-hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+.mobile-menus ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  list-style-type: none;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-menus ul li {
+  padding: 1.2rem;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.2s ease;
+}
+
+.mobile-menus ul li:hover {
+  color: var(--primary-color);
+  transform: translateX(10px);
+  background-color: #f8f9fa;
+}
+
+.mobile-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.3rem;
+  padding: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.mobile-icons svg {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobile-icons svg:hover {
+  color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  nav {
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+
+  .nav-menus {
+    display: none;
+  }
+
+  .nav-icons-desktop {
+    display: none;
+  }
+
+  .nav-hamburger {
+    display: block;
+  }
+
+  .mobile-menu {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 10px 10px;
+    z-index: 1000;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .mobile-menu.open {
+    max-height: 500px;
+  }
+
+  .nav-left {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .nav-logo img {
+    height: 50px;
+    margin-top: 0;
+  }
+}
