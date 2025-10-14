@@ -1,0 +1,117 @@
+.facilities-container {
+  padding: 60px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.facilities-list {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 80px;
+}
+
+/* Reverse layout for odd items */
+.facilities-list.reverse {
+  flex-direction: row-reverse;
+}
+
+/* Image Section */
+.facilities-image {
+  flex: 0 0 auto;
+}
+
+.facilities-list img {
+  height: 400px;
+  width: 650px;
+  border-radius: 3%;
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Content Section */
+.facilities-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.facilities-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.facilities-description {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555;
+  margin: 0;
+  text-align: justify;
+}
+
+.facilities-button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: fit-content;
+  transition: background-color 0.3s ease;
+}
+
+.facilities-button:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .facilities-list {
+    gap: 40px;
+  }
+
+  .facilities-title {
+    font-size: 28px;
+  }
+
+  .facilities-list img {
+    height: 350px;
+    width: 550px;
+  }
+}
+
+@media (max-width: 768px) {
+  .facilities-container {
+    padding: 40px 20px;
+  }
+
+  .facilities-list {
+    flex-direction: column !important;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .facilities-list.reverse {
+    flex-direction: column !important;
+  }
+
+  .facilities-list img {
+    height: 300px;
+    width: 300px;
+    margin-left: -13%;
+  }
+
+  .facilities-title {
+    font-size: 24px;
+  }
+
+  .facilities-description {
+    font-size: 15px;
+  }
+}

@@ -16,7 +16,7 @@ const Footer = () => {
             Geiststr. 3 <br /> 59320 Ennigerloh • Germany
           </h3>
           <div className="contact-item">
-            <IoMail className="icon" /> <span>info@dct.biz</span>
+            <IoMail className="icon" /> <span>info@interminesolutions.de</span>
           </div>
           <div className="contact-item">
             <FaPhone className="icon" /> <span>+49 2524 616133</span>
@@ -49,6 +49,15 @@ const Footer = () => {
           </button>
         </div>
       </footer>
+
+      <div className="footer-bottom sora">
+        <p>
+          © {new Date().getFullYear()} Intermine Solutions. All rights reserved.
+        </p>
+        <p>
+          Powered by <span><a href="https://trondigital.ae" >Tron Digital</a></span>
+        </p>
+      </div>
     </>
   );
 };

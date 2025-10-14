@@ -1,5 +1,5 @@
 footer {
-  min-height: 44vh;
+  min-height: 65vh;
   width: 100%;
   background-color: #0d0f1a;
   background-image: radial-gradient(
@@ -157,4 +157,25 @@ footer {
   footer {
     padding: 30px 20px;
   }
+}
+
+/*  Footer Bottom Section */
+.footer-bottom {
+  width: 100%;
+  background-color: #0b0d17;
+  color: #cccccc;
+  text-align: center;
+  padding: 18px 10px;
+  font-size: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: -8%;
+}
+
+.footer-bottom span {
+  color: #3893d0;
+  font-weight: 600;
+}
+
+.footer-bottom p {
+  margin: 4px 0;
 }

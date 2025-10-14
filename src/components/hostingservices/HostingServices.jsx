@@ -1,18 +1,20 @@
 import React from 'react';
 import { hostingServicesData } from "../../utils/hostingServicesData";
-import "../hostingservices/HostingServices.css"
+import "../hostingservices/HostingServices.css";
 
-const HostingServices = () => {
+const HostingServices = ({ limit }) => {
+  const displayedServices = limit ? hostingServicesData.slice(0, limit) : hostingServicesData;
+
   return (
     <div className='hosting-services-container'>
-      {hostingServicesData.map((service, index) => (
+      {displayedServices.map((service, index) => (
         <div key={service.id} className={`hosting-services-list ${index % 2 !== 0 ? 'reverse' : ''}`}>
           {/* Image Section */}
           <div className="hosting-services-image">
             <img src={service.image} alt={service.title} />
           </div>
 
-          {/* Content on Right */}
+          {/* Content Section */}
           <div className="hosting-services-content sora">
             <h2 className="hosting-services-title">{service.title}</h2>
             <p className="hosting-services-description">{service.description}</p>

@@ -144,3 +144,18 @@ nav {
     margin-top: 0;
   }
 }
+
+.nav-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+.nav-link.active {
+  color: var(--primary-color);
+  font-weight: 700;
+}

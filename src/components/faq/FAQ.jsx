@@ -18,7 +18,7 @@ const FAQ = () => {
         <p className="faq-subtitle">Find answers to common questions about our hosting services</p>
       </div>
 
-      <div className="faq-content">
+      <div className="faq-content ">
         {faqData.map((item) => (
           <div key={item.id} className="faq-item">
             <button 
