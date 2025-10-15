@@ -30,7 +30,14 @@ const Navbar = () => {
 
         <div className="nav-menus sora">
           <ul>
-            <li>Store</li>
+           
+
+            
+            <li>
+              <NavLink to="/shop" className="nav-link">
+                Shop
+              </NavLink>
+            </li>
 
             <li>
               <NavLink to="/hosting-services" className="nav-link">

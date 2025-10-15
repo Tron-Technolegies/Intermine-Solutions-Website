@@ -10,6 +10,8 @@ import BlogPage from "./pages/BlogPage";
 import BlogDetails from "./components/blogs/BlogDetails";
 import Blogs from "./components/blogs/Blogs";
 import FacilitiesPage from "./pages/FacilitiesPage";
+import ShopPage from "./pages/productpages/ShopPage";
+
 
 
 const App = () => {
@@ -36,6 +38,12 @@ const App = () => {
         {
           path: "facilities",
           element: <FacilitiesPage/>
+        },
+
+        {
+          path : "shop",
+          element: <ShopPage/>
+          
         },
         {
           path: "products",
