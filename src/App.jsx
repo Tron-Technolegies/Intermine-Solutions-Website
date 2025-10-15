@@ -11,6 +11,7 @@ import BlogDetails from "./components/blogs/BlogDetails";
 import Blogs from "./components/blogs/Blogs";
 import FacilitiesPage from "./pages/FacilitiesPage";
 import ShopPage from "./pages/productpages/ShopPage";
+import ProductDetails from "./pages/productpages/ProductDetails";
 
 
 
@@ -49,6 +50,11 @@ const App = () => {
           path: "products",
           element: <ProductList />,
         },
+        {
+          path: "product/:handle",
+          element: <ProductDetails/>
+        }
+       
       ],
     },
   ]);

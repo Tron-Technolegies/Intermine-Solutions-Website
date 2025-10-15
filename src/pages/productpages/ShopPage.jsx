@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom"; // ✅ Added for navigation
 import "../productpages/ShopPage.css";
 
 const ShopPage = () => {
@@ -64,7 +65,6 @@ const ShopPage = () => {
           const fetchedProducts = data.data.products.edges;
 
           products = [...products, ...fetchedProducts];
-
           hasNextPage = data.data.products.pageInfo.hasNextPage;
 
           if (hasNextPage && fetchedProducts.length > 0) {
@@ -109,11 +109,7 @@ const ShopPage = () => {
 
     if (startPage > 1) {
       pageNumbers.push(
-        <button
-          key={1}
-          onClick={() => handlePageChange(1)}
-          className="page-number"
-        >
+        <button key={1} onClick={() => handlePageChange(1)} className="page-number">
           1
         </button>
       );
@@ -164,27 +160,35 @@ const ShopPage = () => {
 
   return (
     <div className="shop-page-wrapper">
+      <h2 className="shop-heading sora">Our Products</h2>
+
       <div className="shop-container sora">
-        {currentProducts.map((product) => {
-          const p = product.node;
-          return (
-            <div key={p.id} className="product-card">
-              <img
-                src={p.images.edges[0]?.node.src}
-                alt={p.title}
-                className="product-image"
-              />
-              <h3 className="product-title">{p.title}</h3>
-              <p className="product-price">
-                {p.priceRange.minVariantPrice.amount}{" "}
-                {p.priceRange.minVariantPrice.currencyCode}
-              </p>
-              <a href={`/product/${p.handle}`} className="view-details-btn">
-                View Details
-              </a>
-            </div>
-          );
-        })}
+        {currentProducts.length === 0 ? (
+          <p className="no-products-text">No products available.</p>
+        ) : (
+          currentProducts.map((product) => {
+            const p = product.node;
+            return (
+              <div key={p.id} className="product-card">
+                <img
+                  src={p.images.edges[0]?.node.src}
+                  alt={p.title}
+                  className="product-image"
+                />
+                <h3 className="product-title">{p.title}</h3>
+                <p className="product-price">
+                  {p.priceRange.minVariantPrice.amount}{" "}
+                  {p.priceRange.minVariantPrice.currencyCode}
+                </p>
+
+                {/* ✅ Updated: React Router Link */}
+                <Link to={`/product/${p.handle}`} className="view-details-btn">
+                  View Details
+                </Link>
+              </div>
+            );
+          })
+        )}
       </div>
 
       {totalPages > 1 && (
