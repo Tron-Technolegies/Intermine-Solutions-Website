@@ -160,7 +160,7 @@ const ShopPage = () => {
 
   return (
     <div className="shop-page-wrapper">
-      <h2 className="shop-heading sora">Our Products</h2>
+      {/* <h2 className="shop-heading sora">Our Products</h2> */}
 
       <div className="shop-container sora">
         {currentProducts.length === 0 ? (

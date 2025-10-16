@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "../productpages/ProductDetails.css"
+import "../productpages/ProductDetails.css";
 
 const ProductDetails = () => {
   const { handle } = useParams();
@@ -26,6 +26,7 @@ const ProductDetails = () => {
               edges {
                 node {
                   id
+                  title
                   price {
                     amount
                     currencyCode
@@ -52,7 +53,12 @@ const ProductDetails = () => {
         );
 
         const data = await response.json();
-        setProduct(data.data.product);
+
+        if (data?.data?.product) {
+          setProduct(data.data.product);
+        } else {
+          console.error("Product not found or API response invalid:", data);
+        }
       } catch (error) {
         console.error("Error fetching product:", error);
       } finally {
@@ -63,43 +69,19 @@ const ProductDetails = () => {
     fetchProduct();
   }, [handle]);
 
-  const handleBuyNow = async () => {
+  // ✅ BUY NOW HANDLER (No GraphQL checkout mutation)
+  const handleBuyNow = () => {
     if (!product) return;
 
-    const variantId = product.variants.edges[0].node.id;
+    // Extract variant ID
+    const shopifyGid = product.variants.edges[0].node.id;
 
-    const checkoutQuery = `
-      mutation {
-        checkoutCreate(input: {
-          lineItems: [{ variantId: "${variantId}", quantity: 1 }]
-        }) {
-          checkout {
-            webUrl
-          }
-        }
-      }
-    `;
+    // Convert Shopify GID (e.g. gid://shopify/ProductVariant/123456789) → numeric ID
+    const numericVariantId = shopifyGid.split("/").pop();
 
-    try {
-      const response = await fetch(
-        "https://shop.intermine-solutions.de/api/2024-10/graphql.json",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Shopify-Storefront-Access-Token": import.meta.env
-              .VITE_SHOPIFY_STOREFRONT_TOKEN,
-          },
-          body: JSON.stringify({ query: checkoutQuery }),
-        }
-      );
-
-      const data = await response.json();
-      const checkoutUrl = data.data.checkoutCreate.checkout.webUrl;
-      window.location.href = checkoutUrl; // Redirect to Shopify checkout
-    } catch (error) {
-      console.error("Error creating checkout:", error);
-    }
+    // Redirect user directly to Shopify checkout/cart
+    const checkoutUrl = `https://shop.intermine-solutions.de/cart/${numericVariantId}:1`;
+    window.location.href = checkoutUrl;
   };
 
   if (loading) return <p>Loading product...</p>;
