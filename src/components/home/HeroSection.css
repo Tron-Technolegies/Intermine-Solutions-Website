@@ -142,7 +142,7 @@
 }
 
 .btn-primary:hover {
-  background-color: #45a049;
+  background-color: var(--secondary-color);
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(76, 175, 80, 0.5);
 }

@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import "../navbar/Navbar.css";
 import interminelogo from "../../../public/logo/intermine-logo.webp";
-import { IoSearchSharp } from "react-icons/io5";
-import { CiGlobe } from "react-icons/ci";
-import { FaShoppingBag, FaBars } from "react-icons/fa";
-import { MdOutlineShoppingBag } from "react-icons/md";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { NavLink, Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -30,22 +27,12 @@ const Navbar = () => {
 
         <div className="nav-menus sora">
           <ul>
-           
-
-            
-            <li>
-              <NavLink to="/shop" className="nav-link">
-                Shop
-              </NavLink>
-            </li>
-
             <li>
               <NavLink to="/hosting-services" className="nav-link">
                 Hosting
               </NavLink>
             </li>
-
-           <li>
+            <li>
               <NavLink to="/facilities" className="nav-link">
                 Facilities
               </NavLink>
@@ -55,7 +42,6 @@ const Navbar = () => {
                 Blogs
               </NavLink>
             </li>
-
             <li>
               <NavLink to="/faq" className="nav-link">
                 FAQ
@@ -64,27 +50,46 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="nav-icons-desktop">
-          <IoSearchSharp size={22} />
-          <CiGlobe size={22} />
-          <MdOutlineShoppingBag size={22} />
+        {/* Desktop Shop Now Button */}
+        <div className="nav-btn-container sora">
+          <Link to="/shop" className="shop-now-btn">
+            Shop Now
+          </Link>
         </div>
 
+        {/* Mobile Menu */}
         {isOpen && (
-          <div className="mobile-menu">
+          <div className="mobile-menu open">
             <div className="mobile-menus sora">
               <ul>
-                <li onClick={toggleMenu}>Store</li>
-                <li onClick={toggleMenu}>Hosting</li>
-                <li onClick={toggleMenu}>Facilities</li>
-                <li onClick={toggleMenu}>Blogs</li>
-                <li onClick={toggleMenu}>FAQ</li>
+                <li onClick={toggleMenu}>
+                  <NavLink to="/hosting-services" className="nav-link">
+                    Hosting
+                  </NavLink>
+                </li>
+                <li onClick={toggleMenu}>
+                  <NavLink to="/facilities" className="nav-link">
+                    Facilities
+                  </NavLink>
+                </li>
+                <li onClick={toggleMenu}>
+                  <NavLink to="/blogs" className="nav-link">
+                    Blogs
+                  </NavLink>
+                </li>
+                <li onClick={toggleMenu}>
+                  <NavLink to="/faq" className="nav-link">
+                    FAQ
+                  </NavLink>
+                </li>
               </ul>
-            </div>
-            <div className="mobile-icons">
-              <IoSearchSharp size={15} onClick={toggleMenu} />
-              <CiGlobe size={15} onClick={toggleMenu} />
-              <FaShoppingBag size={15} onClick={toggleMenu} />
+
+              {/* Shop Now Button for Mobile */}
+              <div className="mobile-shop-btn-container">
+                <Link to="/shop" className="shop-now-btn" onClick={toggleMenu}>
+                  Shop Now
+                </Link>
+              </div>
             </div>
           </div>
         )}

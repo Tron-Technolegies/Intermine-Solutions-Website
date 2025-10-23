@@ -1,38 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
 import '../home/HeroSection.css';
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const navigate = useNavigate();
 
   const slides = [
     {
       video: '/carouselvideos/secondcarouselvideo.mp4',
       title: 'ASIC MINERS & HOSTING',
-      description: '25 years of network technology, crypto mining and e-commerce. Miner hosting from 4.9 cents/kWh.',
+      description:
+        '25 years of network technology, crypto mining and e-commerce. Miner hosting from 4.9 cents/kWh.',
       buttons: [
-        { text: 'VISIT SHOP', variant: 'primary' },
-        { text: 'BOOK CONSULTING APPOINTMENT', variant: 'secondary' }
-      ]
+        { text: 'VISIT SHOP', variant: 'primary', link: '/shop' },
+        { text: 'BOOK CONSULTING APPOINTMENT', variant: 'secondary' },
+      ],
     },
     {
       video: '/carouselvideos/firstcarouselvideo.mp4',
       title: 'PROFESSIONAL CRYPTO HOSTING',
-      description: 'State-of-the-art infrastructure with 24/7 monitoring and optimal cooling systems.',
+      description:
+        'State-of-the-art infrastructure with 24/7 monitoring and optimal cooling systems.',
       buttons: [
-        { text: 'EXPLORE HOSTING', variant: 'primary' },
-        { text: 'GET A QUOTE', variant: 'secondary' }
-      ]
+        { text: 'EXPLORE HOSTING', variant: 'primary', link: '/shop' },
+        { text: 'GET A QUOTE', variant: 'secondary' },
+      ],
     },
     {
       video: '/carouselvideos/secondcarouselvideo.mp4',
       title: 'PREMIUM MINING HARDWARE',
-      description: 'Latest ASIC miners from top manufacturers. Competitive pricing and fast delivery.',
+      description:
+        'Latest ASIC miners from top manufacturers. Competitive pricing and fast delivery.',
       buttons: [
-        { text: 'VIEW PRODUCTS', variant: 'primary' },
-        { text: 'CONTACT US', variant: 'secondary' }
-      ]
-    }
+        { text: 'VIEW PRODUCTS', variant: 'primary', link: '/shop' },
+        { text: 'CONTACT US', variant: 'secondary' },
+      ],
+    },
   ];
 
   useEffect(() => {
@@ -43,16 +48,14 @@ const HeroSection = () => {
     return () => clearInterval(timer);
   }, [slides.length]);
 
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-  };
+  const goToSlide = (index) => setCurrentSlide(index);
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  const handleButtonClick = (button) => {
+    if (button.link) {
+      navigate(button.link);
+    }
   };
 
   return (
@@ -61,16 +64,20 @@ const HeroSection = () => {
       {slides.map((slide, index) => (
         <div
           key={index}
-          className={`hero-slide ${index === currentSlide ? 'active' : ''} ${index < currentSlide ? 'prev' : ''} ${index > currentSlide ? 'next' : ''}`}
+          className={`hero-slide ${
+            index === currentSlide ? 'active' : ''
+          } ${index < currentSlide ? 'prev' : ''} ${
+            index > currentSlide ? 'next' : ''
+          }`}
         >
-          {/* Video Background - Replace with actual video */}
+          {/* Video Background */}
           <div className="video-background">
-            <video autoPlay muted loop playsInline>
+            <video autoPlay muted loop playsInline preload="metadata">
               <source src={slide.video} type="video/mp4" />
             </video>
             <div className="video-placeholder"></div>
           </div>
-          
+
           <div className="video-overlay"></div>
 
           {/* Slide Content */}
@@ -82,7 +89,12 @@ const HeroSection = () => {
                 {slide.buttons.map((button, btnIndex) => (
                   <button
                     key={btnIndex}
-                    className={`hero-btn ${button.variant === 'primary' ? 'btn-primary' : 'btn-secondary'}`}
+                    className={`hero-btn ${
+                      button.variant === 'primary'
+                        ? 'btn-primary'
+                        : 'btn-secondary'
+                    }`}
+                    onClick={() => handleButtonClick(button)}
                   >
                     {button.text}
                   </button>
@@ -94,7 +106,7 @@ const HeroSection = () => {
       ))}
 
       {/* Navigation Arrows */}
-      <button
+      {/* <button
         onClick={prevSlide}
         className="nav-arrow nav-arrow-left"
         aria-label="Previous slide"
@@ -108,7 +120,7 @@ const HeroSection = () => {
         aria-label="Next slide"
       >
         <IoChevronForward />
-      </button>
+      </button> */}
 
       {/* Dots Navigation */}
       <div className="dots-container">

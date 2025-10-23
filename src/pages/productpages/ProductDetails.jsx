@@ -84,25 +84,31 @@ const ProductDetails = () => {
     window.location.href = checkoutUrl;
   };
 
-  if (loading) return <p>Loading product...</p>;
-  if (!product) return <p>Product not found</p>;
+  if (loading) return <p className="loading-text">Loading product...</p>;
+  if (!product) return <p className="error-text">Product not found</p>;
 
   return (
     <div className="product-details-container sora">
-      <img
-        src={product.images.edges[0]?.node.src}
-        alt={product.title}
-        className="product-details-image"
-      />
-      <h1>{product.title}</h1>
-      <p>{product.description}</p>
-      <p>
-        Price: {product.variants.edges[0].node.price.amount}{" "}
-        {product.variants.edges[0].node.price.currencyCode}
-      </p>
-      <button onClick={handleBuyNow} className="buy-now-btn">
-        Buy Now
-      </button>
+      <div className="product-details-image-section">
+        <img
+          src={product.images.edges[0]?.node.src}
+          alt={product.title}
+          className="product-details-main-image"
+        />
+      </div>
+      <div className="product-details-info">
+        <h2 className="product-details-title">{product.title}</h2>
+        <p className="product-details-price">
+          Price: {product.variants.edges[0].node.price.amount}{" "}
+          {product.variants.edges[0].node.price.currencyCode}
+        </p>
+        <div className="product-details-description">
+          {product.description}
+        </div>
+        <button onClick={handleBuyNow} className="buy-now-btn">
+          Buy Now
+        </button>
+      </div>
     </div>
   );
 };

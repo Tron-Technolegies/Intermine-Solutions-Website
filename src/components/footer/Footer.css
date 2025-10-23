@@ -1,5 +1,5 @@
 footer {
-  min-height: 65vh;
+  min-height: 68vh;
   width: 100%;
   background-color: #0d0f1a;
   background-image: radial-gradient(
@@ -146,6 +146,7 @@ footer {
   font-size: 18px;
 }
 
+/* Responsive layout */
 @media (max-width: 1024px) {
   footer {
     flex-direction: column;
@@ -159,7 +160,7 @@ footer {
   }
 }
 
-/*  Footer Bottom Section */
+/* Footer Bottom Section */
 .footer-bottom {
   width: 100%;
   background-color: #0b0d17;
@@ -171,11 +172,23 @@ footer {
   margin-top: -8%;
 }
 
-.footer-bottom span {
+.footer-bottom span a {
   color: #3893d0;
   font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-bottom span a:hover {
+  text-decoration: underline;
 }
 
 .footer-bottom p {
   margin: 4px 0;
+}
+
+/* ✅ Fix for mobile - prevent overlap with sticky coin bar */
+@media (max-width: 768px) {
+  .footer-bottom {
+    padding-bottom: 70px; /* enough space above sticky coin ticker */
+  }
 }

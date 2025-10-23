@@ -55,7 +55,12 @@ const Footer = () => {
           © {new Date().getFullYear()} Intermine Solutions. All rights reserved.
         </p>
         <p>
-          Powered by <span><a href="https://trondigital.ae" >Tron Digital</a></span>
+          Powered by{" "}
+          <span>
+            <a href="https://trondigital.ae" target="_blank" rel="noreferrer">
+              Tron Digital
+            </a>
+          </span>
         </p>
       </div>
     </>
