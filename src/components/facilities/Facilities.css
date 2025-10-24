@@ -103,8 +103,8 @@
 
   .facilities-list img {
     height: 300px;
-    width: 300px;
-    margin-left: -13%;
+    width: 400px;
+    /* margin-left: -13%; */
   }
 
   .facilities-title {
